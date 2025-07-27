@@ -2,6 +2,7 @@ class BankAccount:
     def __init__(self, owner, balance):
         self.owner = owner          # public
         self.__balance = balance    # private
+        self.balance = balance            # public
 
     def deposit(self, amount):
         if amount > 0:
@@ -27,7 +28,7 @@ account.withdraw(100)
 print("Current Balance:", account.get_balance())
 
 # Trying to access private attribute directly (not recommended)
-print(account.__balance)  # Raises AttributeError
+print(f" Initial balance {account.balance}")  # Raises AttributeError
 
 # Correct way (through name mangling)
-print(account._BankAccount__balance)
+print(f"Current Balance {account._BankAccount__balance}")
